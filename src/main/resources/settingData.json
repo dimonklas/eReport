@@ -1,0 +1,68 @@
+{
+  "settingsData": [
+    {
+      "fiscalService": "0630 ГУ ДФС У ЖИТОМИРСЬКIЙ ОБЛАСТI",
+      "dfsBody": "Щербина Виталий1",
+      "pensionFundCode": "1420983000",
+      "registrationNumberPension": "",
+      "koatuu": "1253489345",
+      "legalForm": "240 - (ТОВ) Товариство з обмеженою відповідальністю",
+      "businessAddress": {"address": "39600, Полтавская обл., г. Кременчуг, ул. Гагарина, буд. 27/4, оф. 43", "officeOrFlat": "оф."},
+      "factAddress": {"address": "39600, Полтавская обл., г. Кременчуг, ул. Гагарина, буд. 27/4, оф. 43", "officeOrFlat": "оф."},
+      "vatPayer": "Без ПДВ",
+      "telephone": "121212121212",
+      "email": "promkom2003@ya.ru",
+      "director": "Давиденко Вячеслав Олександрович",
+      "accountant": "Унченко Антон Павлович",
+      "mainNACE": "46.42 Оптова торгiвля одягом i взуттям"
+    },
+    {
+      "fiscalService": "0630 ГУ ДФС У ЖИТОМИРСЬКIЙ ОБЛАСТI",
+      "dfsBody": "Щербина Виталий2",
+      "pensionFundCode": "1420983000",
+      "registrationNumberPension": "",
+      "koatuu": "1253489345",
+      "legalForm": "240 - (ТОВ) Товариство з обмеженою відповідальністю",
+      "businessAddress": {"address": "39600, Полтавская обл., г. Кременчуг, ул. Гагарина, буд. 27/4, оф. 43", "officeOrFlat": "оф."},
+      "factAddress": {"address": "39600, Полтавская обл., г. Кременчуг, ул. Гагарина, буд. 27/4, оф. 43", "officeOrFlat": "оф."},
+      "vatPayer": "Без ПДВ",
+      "telephone": "121212121212",
+      "email": "promkom2003@ya.ru",
+      "director": "Давиденко Вячеслав Олександрович",
+      "accountant": "Унченко Антон Павлович",
+      "mainNACE": "46.42 Оптова торгiвля одягом i взуттям"
+    },
+    {
+      "fiscalService": "0630 ГУ ДФС У ЖИТОМИРСЬКIЙ ОБЛАСТI",
+      "dfsBody": "Щербина Виталий3",
+      "pensionFundCode": "1420983000",
+      "registrationNumberPension": "",
+      "koatuu": "1253489345",
+      "legalForm": "240 - (ТОВ) Товариство з обмеженою відповідальністю",
+      "businessAddress": {"address": "39600, Полтавская обл., г. Кременчуг, ул. Гагарина, буд. 27/4, оф. 43", "officeOrFlat": "оф."},
+      "factAddress": {"address": "39600, Полтавская обл., г. Кременчуг, ул. Гагарина, буд. 27/4, оф. 43", "officeOrFlat": "оф."},
+      "vatPayer": "Без ПДВ",
+      "telephone": "121212121212",
+      "email": "promkom2003@ya.ru",
+      "director": "Давиденко Вячеслав Олександрович",
+      "accountant": "Унченко Антон Павлович",
+      "mainNACE": "46.42 Оптова торгiвля одягом i взуттям"
+    },
+    {
+      "fiscalService": "0913 ТИСМЕНИЦЬКА ОДПI ГУ ДФС",
+      "dfsBody": "хули мусора, хули мусора, хули",
+      "pensionFundCode": "хули мусора, хули мусора, хули",
+      "registrationNumberPension": "хули мусора, хули мусора, хули",
+      "koatuu": "1253489777",
+      "legalForm": "150 - (КП) Комунальне підприємство",
+      "businessAddress": {"address": "39600, Полтавская обл., г. Кременчуг, ул. Гагарина, буд. 27/4, оф. 43", "officeOrFlat": "оф."},
+      "factAddress": {"address": "39600, Полтавская обл., г. Кременчуг, ул. Гагарина, буд. 27/4, оф. 43", "officeOrFlat": "оф."},
+      "vatPayer": "З ПДВ",
+      "telephone": "121212121212",
+      "email": "promkom2003@ya.ru",
+      "director": "Давиденко Вячеслав Олександрович",
+      "accountant": "Унченко Антон Павлович",
+      "mainNACE": "46.42 Оптова торгiвля одягом i взуттям"
+    }
+  ]
+}

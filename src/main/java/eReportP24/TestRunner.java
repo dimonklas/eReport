@@ -1,7 +1,7 @@
 package eReportP24;
 
-import eReportP24.entity.SettingsData;
-import eReportP24.entity.SettingsDataItem;
+import eReportP24.entity.j3001001.J3001001DataItem;
+import eReportP24.entity.settingsData.SettingsDataItem;
 import eReportP24.pages.MainPage;
 import eReportP24.pages.SettingsPage;
 import eReportP24.pages.instructions.*;
@@ -12,6 +12,7 @@ import lombok.extern.log4j.Log4j;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import static eReportP24.utils.Utils.getJ3001001DataItem;
 import static eReportP24.utils.Utils.getNewSettingsDataItem;
 
 @Log4j
@@ -75,5 +76,11 @@ public class TestRunner extends SetUpAndTearDown {
         settingsPage.closeSettingsPage();
         new MainPage().openSettings();
         settingsPage.checkAllSettingsValues(settingsDataItem);
+    }
+
+    @Test(description = "Создадим документ")
+    public void createDocument() {
+        J3001001DataItem j3001001DataItem = getJ3001001DataItem();
+
     }
 }

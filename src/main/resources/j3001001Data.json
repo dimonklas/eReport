@@ -1,0 +1,79 @@
+{
+  "j3001001Data": [
+    {
+      "declarationName": "про прийняття працівника на роботу",
+      "declarationCode": "J3001001",
+      "numberOfList": "1",
+      "numberPassportSeria": "31435622",
+      "companyName": "Комунальне підприємство \"TEST TEST MCB_0309\"",
+      "type": "початкове",
+      "persons": [
+        {
+          "category": "",
+          "registrationNumber": "",
+          "fio": "",
+          "orderNumber": "",
+          "publicationOrderDate": "",
+          "startDateWork": ""
+        },
+        {
+          "category": "",
+          "registrationNumber": "",
+          "fio": "",
+          "orderNumber": "",
+          "publicationOrderDate": "",
+          "startDateWork": ""
+        },
+        {
+          "category": "",
+          "registrationNumber": "",
+          "fio": "",
+          "orderNumber": "",
+          "publicationOrderDate": "",
+          "startDateWork": ""
+        }
+      ],
+      "formationDate": "",
+      "rowsCount": "",
+      "bossPassport": "",
+      "boss": "",
+      "accountantPassport": "",
+      "accountant": ""
+    },
+    {
+      "declarationName": "про прийняття працівника на роботу",
+      "declarationCode": "J3001001",
+      "numberOfList": "1",
+      "numberPassportSeria": "31435622",
+      "companyName": "Комунальне підприємство \"TEST TEST MCB_0309\"",
+      "type": "початкове",
+      "persons": [
+        {
+          "category": "",
+          "registrationNumber": "",
+          "fio": "",
+          "orderNumber": "",
+          "publicationOrderDate": "",
+          "startDateWork": ""
+        },
+        {
+          "category": "",
+          "registrationNumber": "",
+          "fio": "",
+          "orderNumber": "",
+          "publicationOrderDate": "",
+          "startDateWork": ""
+        }
+      ],
+      "formationDate": "",
+      "rowsCount": "",
+      "bossPassport": "",
+      "boss": "",
+      "accountantPassport": "",
+      "accountant": ""
+    },
+    {},
+    {},
+    {}
+  ]
+}

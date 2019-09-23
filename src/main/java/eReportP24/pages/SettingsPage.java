@@ -1,9 +1,9 @@
 package eReportP24.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import eReportP24.entity.BusinessAddress;
-import eReportP24.entity.FactAddress;
-import eReportP24.entity.SettingsDataItem;
+import eReportP24.entity.settingsData.BusinessAddress;
+import eReportP24.entity.settingsData.FactAddress;
+import eReportP24.entity.settingsData.SettingsDataItem;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.By;

@@ -1,5 +1,6 @@
 package eReportP24.pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import eReportP24.pages.instructions.*;
 import io.qameta.allure.Step;
@@ -13,6 +14,13 @@ public class MainPage {
     private SelenideElement title = $(By.xpath("//*[text()='Електронна звітність']"));
     private SelenideElement instructions = $(By.className("instructions"));
     private SelenideElement settings = $(By.xpath("//div[@title='Налаштування']"));
+    private SelenideElement tabInWork = $(By.className("tab-in-work check"));
+    private SelenideElement tabAccepted = $(By.className("tab-accepted"));
+    private SelenideElement createBtn = $(By.id("btn_create"));
+    private SelenideElement importBtn = $(By.id("btn_import"));
+    private SelenideElement sendBtn = $(By.id("btn_send"));
+    private SelenideElement decryptBtn = $(By.id("btn_decrypt"));
+    private SelenideElement deleteBtn = $(By.id("btn_delete"));
 
     @Step("Проверим, что мы на главной странице")
     public void checkMainPage() {
@@ -66,5 +74,11 @@ public class MainPage {
         settings.shouldBe(visible).click();
         $(By.id("ifr")).waitUntil(visible, 15 * 1000);
         return new SettingsPage();
+    }
+
+    @Step("Перейдем в \"Создание документа\"")
+    public CreateDocument goToCreateDocument() {
+        createBtn.shouldBe(Condition.visible).click();
+        return new CreateDocument();
     }
 }

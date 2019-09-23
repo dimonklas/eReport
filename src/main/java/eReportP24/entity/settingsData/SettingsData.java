@@ -1,4 +1,4 @@
-package eReportP24.entity;
+package eReportP24.entity.settingsData;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;

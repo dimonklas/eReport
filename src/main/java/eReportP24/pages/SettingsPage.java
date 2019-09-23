@@ -8,7 +8,7 @@ import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.switchTo;
 
@@ -27,34 +27,68 @@ public class SettingsPage {
     SelenideElement factAddressWrap = $(By.id("address_fact_id-triggerWrap"));
     SelenideElement factAddress = $(By.xpath("//input[@name='address_fact_id']//../following-sibling::input"));
     SelenideElement vatPayer = $(By.xpath("//input[@name='nds']//../following-sibling::input"));
+    SelenideElement inn = $(By.xpath("//div[@id='nds_ipn']//input"));
     SelenideElement telephone = $(By.xpath("//input[@name='phone']//../following-sibling::input"));
     SelenideElement email = $(By.xpath("//input[@name='email']//../following-sibling::input"));
     SelenideElement director = $(By.xpath("//input[@name='boss']//../following-sibling::input"));
     SelenideElement accountant = $(By.xpath("//input[@name='buh']//../following-sibling::input"));
     SelenideElement mainNACE = $(By.xpath("//input[@name='com_kved']//../following-sibling::input"));
+    SelenideElement saveBtn = $(By.id("btn_save"));
+    SelenideElement closeBtn = $(By.xpath("//div[@id='btn_save']//following-sibling::div"));
 
     public SettingsPage() {
         switchTo().frame($(By.id("ifr")));
     }
 
+    @Step("Редактируем все данные в настройках")
     public void editAllSettings(SettingsDataItem data) {
         fiscalService.setValue(data.getFiscalService());
         dfsBody.setValue(data.getDfsBody());
-        log.info(data.getPensionFundCode());
         pensionFundCode.setValue(data.getPensionFundCode());
         registrationNumberPension.setValue(data.getRegistrationNumberPension());
         koatuu.setValue(data.getKoatuu());
-
         setDataToLegalForm(data.getLegalForm());
-//        setDataToBusinessAddress(data.getBusinessAddress());
+        setDataToBusinessAddress(data.getBusinessAddress());
         setDataToFactAddress(data.getFactAddress());
-
-        vatPayer.setValue(data.getVatPayer());
-        telephone.setValue(data.getTelephone());
+        setDataToVatPayer(data.getVatPayer(), data.getInn());
+        setDataToTelephone(data.getTelephone());
+        setDataToDirector(data.getDirector());
+        setDataToAccountant(data.getAccountant());
         email.setValue(data.getEmail());
-        director.setValue(data.getDirector());
-        accountant.setValue(data.getAccountant());
         mainNACE.setValue(data.getMainNACE());
+    }
+
+    @Step("Проверяем все данные в настройках")
+    public void checkAllSettingsValues(SettingsDataItem data) {
+        fiscalService.shouldHave(value(data.getFiscalService()));
+        dfsBody.shouldHave(value(data.getDfsBody()));
+        pensionFundCode.shouldHave(value(data.getPensionFundCode()));
+        registrationNumberPension.shouldHave(value(data.getRegistrationNumberPension()));
+        koatuu.shouldHave(value(data.getKoatuu()));
+        legalForm.shouldHave(value(data.getLegalForm()));
+        businessAddress.shouldHave(value(data.getBusinessAddress().getAddress()));
+        factAddress.shouldHave(value(data.getFactAddress().getAddress()));
+        vatPayer.shouldHave(value(data.getVatPayer()));
+        telephone.shouldHave(value(data.getTelephone()));
+        director.shouldHave(value(data.getDirector()));
+        accountant.shouldHave(value(data.getAccountant()));
+        email.shouldHave(value(data.getEmail()));
+        mainNACE.shouldHave(value(data.getMainNACE()));
+    }
+
+    @Step("Сохранить настройки")
+    public void saveSettings() {
+        switchTo().defaultContent();
+        saveBtn.shouldBe(visible).click();
+        switchTo().frame($(By.id("ifr")));
+        $(By.xpath("//*[text()='Дані збережені']")).waitUntil(visible, 10 * 1000);
+        $(By.xpath("//*[text()='Дані збережені']")).waitUntil(hidden, 10 * 1000);
+    }
+
+    @Step("Закрыть страничку \"Настройки\"")
+    public void closeSettingsPage() {
+        switchTo().defaultContent();
+        closeBtn.shouldBe(visible).click();
     }
 
     @Step("Ввести {value} в поле \"Організаційно-правова форма (ОПФ)\"")
@@ -73,6 +107,33 @@ public class SettingsPage {
     @Step("Ввести данные в поле \"Фактична адреса підприємства\"")
     public void setDataToFactAddress(FactAddress factAddressValue) {
         factAddressWrap.shouldBe(visible).click();
-        $(By.xpath(String.format("//li[contains(text(), '%s')]", factAddressValue.getAddress()))).waitUntil(visible, 5 * 1000).click();
+        $(By.xpath(String.format("(//li[contains(text(), '%s')])[last()]", factAddressValue.getAddress()))).waitUntil(visible, 5 * 1000).click();
+    }
+
+    @Step("Ввести данные в поле \"Платник ПДВ\"")
+    public void setDataToVatPayer(String vatPayerValue, String innValue) {
+        vatPayer.shouldBe(visible).click();
+        $(By.xpath(String.format("//li[contains(text(), '%s')]", vatPayerValue))).waitUntil(visible, 5 * 1000).click();
+        if (vatPayerValue.equalsIgnoreCase("З ПДВ")) {
+            inn.shouldBe(visible).setValue(innValue);
+        }
+    }
+
+    @Step("Ввести данные в поле \"Телефон\"")
+    public void setDataToTelephone(String telephoneValue) {
+        telephone.shouldBe(visible).click();
+        $(By.xpath(String.format("//li[contains(text(), '%s')]", telephoneValue))).waitUntil(visible, 5 * 1000).click();
+    }
+
+    @Step("Ввести данные в поле \"Директор\"")
+    public void setDataToDirector(String directorValue) {
+        director.shouldBe(visible).click();
+        $(By.xpath(String.format("//li[contains(text(), '%s')]", directorValue))).waitUntil(visible, 5 * 1000).click();
+    }
+
+    @Step("Ввести данные в поле \"Бухгалтер\"")
+    public void setDataToAccountant(String accountantValue) {
+        accountant.shouldBe(visible).click();
+        $(By.xpath(String.format("(//li[contains(text(), '%s')])[last()]", accountantValue))).waitUntil(visible, 5 * 1000).click();
     }
 }

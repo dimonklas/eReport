@@ -16,6 +16,9 @@ public class SettingsDataItem{
 	@JsonProperty("vatPayer")
 	private String vatPayer;
 
+	@JsonProperty("inn")
+	private String inn;
+
 	@JsonProperty("accountant")
 	private String accountant;
 

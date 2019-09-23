@@ -22,7 +22,7 @@ public class SettingsData {
     public SettingsData getSettingsDataFromFile() {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            SettingsData settingsData = mapper.readValue(new File("src/main/resources/settingData.json"), SettingsData.class);
+            SettingsData settingsData = mapper.readValue(new File("src/main/resources/settingsData.json"), SettingsData.class);
             return settingsData;
         } catch (IOException e) {
             e.printStackTrace();

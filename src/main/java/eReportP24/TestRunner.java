@@ -89,6 +89,7 @@ public class TestRunner extends SetUpAndTearDown {
         createDocument.searchAndOpenDocumentTemplate(j3001001DataItem.getDeclarationName());
         j3001001Page
                 .editDocument(j3001001DataItem)
-                .saveDocument();
+                .saveDocument()
+                .checkDocument(j3001001DataItem);
     }
 }

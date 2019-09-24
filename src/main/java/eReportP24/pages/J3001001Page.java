@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 
 import java.util.List;
 
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 
 @Log4j
@@ -47,11 +47,27 @@ public class J3001001Page {
         selectType(j3001001DataItem.getType());
         fillAllPersons(j3001001DataItem.getPersons());
         formationDate.setValue(j3001001DataItem.getFormationDate());
-        rowsCount.setValue(j3001001DataItem.getRowsCount());
+//        rowsCount.setValue(j3001001DataItem.getRowsCount());
         bossPassport.setValue(j3001001DataItem.getBossPassport());
         boss.setValue(j3001001DataItem.getBoss());
         accountantPassport.setValue(j3001001DataItem.getAccountantPassport());
         accountant.setValue(j3001001DataItem.getAccountant());
+        return this;
+    }
+
+    @Step("Редактирование документа (заполним все поля)")
+    public J3001001Page checkDocument(J3001001DataItem j3001001DataItem) {
+        numberPage.shouldHave(exactValue(j3001001DataItem.getNumberOfList()));
+        codeERDPOU.shouldHave(exactValue(j3001001DataItem.getCodeERDPOU()));
+        companyName.shouldHave(exactValue(j3001001DataItem.getCompanyName()));
+        checkType(j3001001DataItem.getType());
+        checkAllPersons(j3001001DataItem.getPersons());
+        formationDate.shouldHave(exactValue(j3001001DataItem.getFormationDate()));
+        rowsCount.shouldHave(exactValue(String.valueOf(j3001001DataItem.getPersons().size())));
+        bossPassport.shouldHave(exactValue(j3001001DataItem.getBossPassport()));
+        boss.shouldHave(exactValue(j3001001DataItem.getBoss()));
+        accountantPassport.shouldHave(exactValue(j3001001DataItem.getAccountantPassport()));
+        accountant.shouldHave(exactValue(j3001001DataItem.getAccountant()));
         return this;
     }
 
@@ -70,6 +86,22 @@ public class J3001001Page {
         }
     }
 
+    @Step("Проверим всех работников")
+    public void checkAllPersons(List<PersonsItem> persons) {
+        for (int i = 0; i < persons.size(); i++) {
+            checkCategory(i + 1, persons.get(i).getCategory());
+            checkRegistrationCardNumber(i + 1, persons.get(i).getRegistrationNumber());
+            checkSecondName(i + 1, persons.get(i).getSecondName());
+            checkFirstName(i + 1, persons.get(i).getFirstName());
+            checkThirdName(i + 1, persons.get(i).getThirdName());
+            checkOrderNumber(i + 1, persons.get(i).getOrderNumber());
+            checkPublicationOrderDate(i + 1, persons.get(i).getPublicationOrderDate());
+            checkStartWorkDate(i + 1, persons.get(i).getStartDateWork());
+        }
+    }
+
+    /***** Для работы с добавлением работников *****/
+
     @Step("Выберем тип")
     public J3001001Page selectType(String type) {
         if (type.equalsIgnoreCase("початкове")) {
@@ -79,7 +111,6 @@ public class J3001001Page {
         }
         return this;
     }
-
 
     @Step("Заполним \"Порядковый номер\" для строки №{rowNum}")
     public J3001001Page fillOrdinalNumber(int rowNum, String value) {
@@ -132,6 +163,72 @@ public class J3001001Page {
     @Step("Заполним \"Дата початку роботи\" для строки №{rowNum}")
     public J3001001Page fillStartWorkDate(int rowNum, String value) {
         $(By.xpath(String.format("//input[@name='T1RXXXXG9D__row%d']", rowNum))).setValue(value);
+        return this;
+    }
+
+    /***** Для проверки данных добавленых работников *****/
+
+    @Step("Выберем тип")
+    public J3001001Page checkType(String type) {
+        if (type.equalsIgnoreCase("початкове")) {
+            typeStart.shouldHave(attribute("checked"));
+        }else if (type.equalsIgnoreCase("скасовуюче")) {
+            typeEnd.shouldHave(attribute("checked"));
+        }
+        return this;
+    }
+
+    @Step("Проверим \"Порядковый номер\" для строки №{rowNum}")
+    public J3001001Page checkOrdinalNumber(int rowNum, String value) {
+        $(By.xpath(String.format("//input[@name='T1ROWNUM__row%d']", rowNum))).shouldHave(value(value));
+        return this;
+    }
+
+    @Step("Проверим \"Категорія особи\" для строки №{rowNum}")
+    public J3001001Page checkCategory(int rowNum, String value) {
+        $(By.xpath(String.format("//select[@name='T1RXXXXG4__row%d']", rowNum))).shouldHave(exactValue(value));
+        return this;
+    }
+
+    @Step("Проверим \"Реєстраційний номер облікової картки\" для строки №{rowNum}")
+    public J3001001Page checkRegistrationCardNumber(int rowNum, String value) {
+        $(By.xpath(String.format("//input[@name='T1RXXXXG5S__row%d']", rowNum))).shouldHave(exactValue(value));
+        return this;
+    }
+
+    @Step("Проверим \"Прізвище застрахованої особи\" для строки №{rowNum}")
+    public J3001001Page checkSecondName(int rowNum, String value) {
+        $(By.xpath(String.format("//input[@name='T1RXXXXG61S__row%d']", rowNum))).shouldHave(exactValue(value));
+        return this;
+    }
+
+    @Step("Проверим \"Ім'я застрахованої особи\" для строки №{rowNum}")
+    public J3001001Page checkFirstName(int rowNum, String value) {
+        $(By.xpath(String.format("//input[@name='T1RXXXXG62S__row%d']", rowNum))).shouldHave(exactValue(value));
+        return this;
+    }
+
+    @Step("Проверим \"По батькові застрахованої особи\" для строки №{rowNum}")
+    public J3001001Page checkThirdName(int rowNum, String value) {
+        $(By.xpath(String.format("//input[@name='T1RXXXXG63S__row%d']", rowNum))).shouldHave(exactValue(value));
+        return this;
+    }
+
+    @Step("Проверим \"Номер наказу\" для строки №{rowNum}")
+    public J3001001Page checkOrderNumber(int rowNum, String value) {
+        $(By.xpath(String.format("//input[@name='T1RXXXXG7S__row%d']", rowNum))).shouldHave(exactValue(value));
+        return this;
+    }
+
+    @Step("Проверим \"Дата видання наказу\" для строки №{rowNum}")
+    public J3001001Page checkPublicationOrderDate(int rowNum, String value) {
+        $(By.xpath(String.format("//input[@name='T1RXXXXG8D__row%d']", rowNum))).shouldHave(exactValue(value));
+        return this;
+    }
+
+    @Step("Проверим \"Дата початку роботи\" для строки №{rowNum}")
+    public J3001001Page checkStartWorkDate(int rowNum, String value) {
+        $(By.xpath(String.format("//input[@name='T1RXXXXG9D__row%d']", rowNum))).shouldHave(exactValue(value));
         return this;
     }
 

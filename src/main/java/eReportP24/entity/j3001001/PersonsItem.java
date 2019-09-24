@@ -1,9 +1,12 @@
 package eReportP24.entity.j3001001;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+
 import javax.annotation.Generated;
 
 @Generated("com.robohorse.robopojogenerator")
+@Getter
 public class PersonsItem{
 
 	@JsonProperty("startDateWork")
@@ -18,8 +21,14 @@ public class PersonsItem{
 	@JsonProperty("category")
 	private String category;
 
-	@JsonProperty("fio")
-	private String fio;
+	@JsonProperty("firstName")
+	private String firstName;
+
+	@JsonProperty("secondName")
+	private String secondName;
+
+	@JsonProperty("thirdName")
+	private String thirdName;
 
 	@JsonProperty("publicationOrderDate")
 	private String publicationOrderDate;

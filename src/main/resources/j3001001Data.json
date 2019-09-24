@@ -4,54 +4,62 @@
       "declarationName": "про прийняття працівника на роботу",
       "declarationCode": "J3001001",
       "numberOfList": "1",
-      "numberPassportSeria": "31435622",
-      "companyName": "Комунальне підприємство \"TEST TEST MCB_0309\"",
-      "type": "початкове",
+      "codeERDPOU": "31435622",
+      "companyName": "Ну чё народ, погнали!",
+      "type": "скасовуюче",
       "persons": [
         {
-          "category": "",
-          "registrationNumber": "",
-          "fio": "",
-          "orderNumber": "",
-          "publicationOrderDate": "",
-          "startDateWork": ""
+          "category": "1",
+          "registrationNumber": "123214",
+          "firstName": "Ярік",
+          "secondName": "Ваділа",
+          "thirdName": "Батькович",
+          "orderNumber": "33112",
+          "publicationOrderDate": "10.09.2019",
+          "startDateWork": "10.09.2019"
         },
         {
-          "category": "",
-          "registrationNumber": "",
-          "fio": "",
-          "orderNumber": "",
-          "publicationOrderDate": "",
-          "startDateWork": ""
+          "category": "2",
+          "registrationNumber": "12412441212",
+          "firstName": "Толік",
+          "secondName": "Відеорегістратор",
+          "thirdName": "Батькович",
+          "orderNumber": "1122",
+          "publicationOrderDate": "11.09.2019",
+          "startDateWork": "11.09.2019"
         },
         {
-          "category": "",
-          "registrationNumber": "",
-          "fio": "",
-          "orderNumber": "",
-          "publicationOrderDate": "",
-          "startDateWork": ""
+          "category": "2",
+          "registrationNumber": "123311",
+          "firstName": "Вітя",
+          "secondName": "Лисенко",
+          "thirdName": "",
+          "orderNumber": "122122",
+          "publicationOrderDate": "01.09.2019",
+          "startDateWork": "01.09.2019"
         }
       ],
-      "formationDate": "",
+      "formationDate": "11.09.2019",
       "rowsCount": "",
-      "bossPassport": "",
-      "boss": "",
-      "accountantPassport": "",
-      "accountant": ""
+      "bossPassport": "580273",
+      "boss": "Big Boss",
+      "accountantPassport": "2288774",
+      "accountant": "acc"
     },
     {
       "declarationName": "про прийняття працівника на роботу",
       "declarationCode": "J3001001",
       "numberOfList": "1",
-      "numberPassportSeria": "31435622",
+      "codeERDPOU": "31435622",
       "companyName": "Комунальне підприємство \"TEST TEST MCB_0309\"",
       "type": "початкове",
       "persons": [
         {
           "category": "",
           "registrationNumber": "",
-          "fio": "",
+          "firstName": "",
+          "secondName": "",
+          "thirdName": "",
           "orderNumber": "",
           "publicationOrderDate": "",
           "startDateWork": ""
@@ -59,7 +67,9 @@
         {
           "category": "",
           "registrationNumber": "",
-          "fio": "",
+          "firstName": "",
+          "secondName": "",
+          "thirdName": "",
           "orderNumber": "",
           "publicationOrderDate": "",
           "startDateWork": ""

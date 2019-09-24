@@ -2,6 +2,8 @@ package eReportP24;
 
 import eReportP24.entity.j3001001.J3001001DataItem;
 import eReportP24.entity.settingsData.SettingsDataItem;
+import eReportP24.pages.CreateDocument;
+import eReportP24.pages.J3001001Page;
 import eReportP24.pages.MainPage;
 import eReportP24.pages.SettingsPage;
 import eReportP24.pages.instructions.*;
@@ -29,6 +31,7 @@ public class TestRunner extends SetUpAndTearDown {
     private VATInvoice vatInvoice;
     private ReportAnnex4 reportAnnex4;
     private SettingsPage settingsPage;
+    private J3001001Page j3001001Page;
 
     @Test(description = "Проверим открытие станицы \"Сервіс «Електронна звітність»\"")
     public void checkElectronicReportingServicePage() {
@@ -80,7 +83,12 @@ public class TestRunner extends SetUpAndTearDown {
 
     @Test(description = "Создадим документ")
     public void createDocument() {
+        j3001001Page = new J3001001Page();
         J3001001DataItem j3001001DataItem = getJ3001001DataItem();
-
+        CreateDocument createDocument = new MainPage().goToCreateDocument();
+        createDocument.searchAndOpenDocumentTemplate(j3001001DataItem.getDeclarationName());
+        j3001001Page
+                .editDocument(j3001001DataItem)
+                .saveDocument();
     }
 }

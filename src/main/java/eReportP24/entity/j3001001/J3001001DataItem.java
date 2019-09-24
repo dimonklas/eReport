@@ -43,8 +43,8 @@ public class J3001001DataItem{
 	@JsonProperty("rowsCount")
 	private String rowsCount;
 
-	@JsonProperty("numberPassportSeria")
-	private String numberPassportSeria;
+	@JsonProperty("codeERDPOU")
+	private String codeERDPOU;
 
 	@JsonProperty("bossPassport")
 	private String bossPassport;

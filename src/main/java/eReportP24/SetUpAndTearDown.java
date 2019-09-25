@@ -3,6 +3,7 @@ package eReportP24;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import eReportP24.pages.LoginPage;
+import eReportP24.pages.MainPage;
 import eReportP24.utils.ConfigurationVariables;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -76,6 +77,11 @@ public class SetUpAndTearDown {
     void login() {
         loginPage = new LoginPage();
         loginPage.login();
+    }
+
+    @BeforeMethod(enabled = true)
+    public void removeAllDocuments() {
+        new MainPage().removeAllDocuments();
     }
 
     @AfterSuite(alwaysRun = true)

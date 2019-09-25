@@ -1,6 +1,7 @@
 package eReportP24.pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import eReportP24.pages.instructions.*;
 import eReportP24.utils.ConfigurationVariables;
@@ -25,6 +26,7 @@ public class MainPage {
     private SelenideElement sendBtn = $(By.id("btn_send"));
     private SelenideElement decryptBtn = $(By.id("btn_decrypt"));
     private SelenideElement deleteBtn = $(By.id("btn_delete"));
+    private SelenideElement checkAllRows = $(By.xpath("//label[@for='check_all_rows']"));
 
     @Step("Проверим, что мы на главной странице")
     public void checkMainPage() {
@@ -90,5 +92,15 @@ public class MainPage {
     public CreateDocument goToCreateDocument() {
         createBtn.shouldBe(Condition.visible).click();
         return new CreateDocument();
+    }
+
+    @Step("Удалить все существующии документы")
+    public void removeAllDocuments() {
+        if (!$(By.xpath("//td[text()='Документи не знайдені']")).isDisplayed()) {
+            checkAllRows.shouldBe(visible).click();
+            deleteBtn.shouldBe(visible).click();
+            $(By.xpath("//span[text()='Так']/..")).shouldBe(visible).click();
+            $(By.xpath("//td[text()='Документи не знайдені']")).waitUntil(visible, 5 * 1000);
+        }
     }
 }

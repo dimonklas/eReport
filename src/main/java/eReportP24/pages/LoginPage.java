@@ -5,7 +5,8 @@ import eReportP24.utils.ConfigurationVariables;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.enabled;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static eReportP24.utils.WorkingWithBrowserTabs.closeBrowserTab;
@@ -17,8 +18,9 @@ public class LoginPage {
     private SelenideElement password = $(By.id("password"));
     private SelenideElement comID = $(By.id("com_id"));
     private SelenideElement dropdown = $(By.className("dropdown"));
+    private static boolean isLogin = false;
 
-    @Step("Откроем главную страницу")
+    @Step("Откроем логин-страницу")
     public LoginPage openLoginPage() {
         open(CV.urlBase);
         return this;
@@ -26,13 +28,18 @@ public class LoginPage {
 
     @Step("Войдём на сайт")
     public void login() {
-        openLoginPage();
-        password.shouldBe(visible, enabled);
-        password.sendKeys(CV.enterPassword);
-        password.pressEnter();
-        $(By.xpath("//*[text()='Войти под компанией:']")).waitUntil(visible, 15 * 1000);
-        selectCompany();
-        selectVersionAndEnter();
+        if (!isLogin) {
+            openLoginPage();
+            password.shouldBe(visible, enabled);
+            password.sendKeys(CV.enterPassword);
+            password.pressEnter();
+            $(By.xpath("//*[text()='Войти под компанией:']")).waitUntil(visible, 15 * 1000);
+            selectCompany();
+            selectVersionAndEnter();
+            isLogin = true;
+        } else {
+            new MainPage().openMainPage();
+        }
     }
 
     @Step("Выберем компанию")

@@ -37,7 +37,6 @@ public class J3001001Page {
     private SelenideElement accountant = $(By.name("HBUH"));
 
 
-
     @Step("Редактирование документа (заполним все поля)")
     public J3001001Page editDocument(J3001001DataItem j3001001DataItem) {
         editBtn.shouldBe(visible).click();
@@ -106,7 +105,7 @@ public class J3001001Page {
     public J3001001Page selectType(String type) {
         if (type.equalsIgnoreCase("початкове")) {
             typeStart.shouldBe(visible).click();
-        }else if (type.equalsIgnoreCase("скасовуюче")) {
+        } else if (type.equalsIgnoreCase("скасовуюче")) {
             typeEnd.shouldBe(visible).click();
         }
         return this;
@@ -172,7 +171,7 @@ public class J3001001Page {
     public J3001001Page checkType(String type) {
         if (type.equalsIgnoreCase("початкове")) {
             typeStart.shouldHave(attribute("checked"));
-        }else if (type.equalsIgnoreCase("скасовуюче")) {
+        } else if (type.equalsIgnoreCase("скасовуюче")) {
             typeEnd.shouldHave(attribute("checked"));
         }
         return this;
@@ -242,5 +241,11 @@ public class J3001001Page {
             log.info("Документ сохранился без ошибок");
         }
         return this;
+    }
+
+    @Step("Подписать и отправить документ")
+    public SingAndSendDocumentPage singAndSendDocument() {
+        sendBtn.shouldBe(visible).click();
+        return new SingAndSendDocumentPage();
     }
 }

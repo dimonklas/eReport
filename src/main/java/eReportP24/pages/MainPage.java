@@ -3,13 +3,17 @@ package eReportP24.pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import eReportP24.pages.instructions.*;
+import eReportP24.utils.ConfigurationVariables;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class MainPage {
+
+    private final ConfigurationVariables CV = ConfigurationVariables.getInstance();
 
     private SelenideElement title = $(By.xpath("//*[text()='Електронна звітність']"));
     private SelenideElement instructions = $(By.className("instructions"));
@@ -32,6 +36,12 @@ public class MainPage {
         instructions.shouldBe(visible).click();
         $(By.xpath("//a[text()='Сервіс «Електронна звітність»']")).waitUntil(visible, 5 * 1000).click();
         return new ElectronicReportingService();
+    }
+
+    @Step("Откроем главную страницу")
+    public MainPage openMainPage() {
+        open(CV.urlMainPageVer3);
+        return this;
     }
 
     @Step("Перейдем на страницу \"Заява про приєднання до договору про визнання електронних документів\"")

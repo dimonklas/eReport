@@ -27,8 +27,10 @@ public class ConfigurationVariables {
     public String techPassword = System.getProperty("techPassword");
     public String enterPassword = System.getProperty("enterPassword");
     public String urlBase = System.getProperty("urlBase");
+    public String urlMainPageVer3 = System.getProperty("urlMainPageVer3");
     public String comID = System.getProperty("comID");
     public String comName = System.getProperty("comName");
+    public String pbKeyPassword = System.getProperty("pbKeyPassword");
     public String downloadsDir = System.getProperty("user.dir") + System.getProperty("file.separator") + "downloads" + System.getProperty("file.separator");
 
     static {
@@ -37,7 +39,7 @@ public class ConfigurationVariables {
         instance = new ConfigurationVariables();
     }
 
-    private ConfigurationVariables () {
+    private ConfigurationVariables() {
         if (currentBrowser == null || currentBrowser.equalsIgnoreCase(""))
             currentBrowser = getProperty(configurationData, "currentBrowser");
 
@@ -62,11 +64,17 @@ public class ConfigurationVariables {
         if (urlBase == null || urlBase.equalsIgnoreCase(""))
             urlBase = getProperty(configurationData, "urlBase");
 
+        if (urlMainPageVer3 == null || urlMainPageVer3.equalsIgnoreCase(""))
+            urlMainPageVer3 = getProperty(configurationData, "urlMainPageVer3");
+
         if (comID == null || comID.equalsIgnoreCase(""))
             comID = getProperty(configurationData, "comID");
 
         if (comName == null || comName.equalsIgnoreCase(""))
             comName = getProperty(configurationData, "comName");
+
+        if (pbKeyPassword == null || pbKeyPassword.equalsIgnoreCase(""))
+            pbKeyPassword = getProperty(configurationData, "pbKeyPassword");
 
         if (timeout == null || timeout.trim().isEmpty()) timeout = getProperty(configurationData, "timeout");
     }

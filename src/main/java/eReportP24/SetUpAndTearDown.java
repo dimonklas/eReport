@@ -8,6 +8,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 import java.io.File;
@@ -64,7 +65,7 @@ public class SetUpAndTearDown {
             FileUtils.deleteDirectory(buildReportsDir);
     }
 
-    @BeforeSuite(alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     void login() {
         loginPage = new LoginPage();
         loginPage.login();

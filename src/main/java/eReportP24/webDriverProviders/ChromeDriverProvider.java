@@ -52,6 +52,7 @@ public class ChromeDriverProvider implements WebDriverProvider {
 
         options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
         options.addExtensions(listExtensions());
+        options.addExtensions(new File(new File("dependencies/Crypto-Plugin_v1.1.8_0.crx").getAbsolutePath()));
 
         ChromeDriver driver = new ChromeDriver(options);
         System.setProperty("browser", options.getBrowserName() + " " + driver.getCapabilities().getVersion());

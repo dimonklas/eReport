@@ -10,7 +10,7 @@ import org.openqa.selenium.By;
 import java.util.List;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.*;
 
 @Log4j
 public class J3001001Page {
@@ -20,6 +20,7 @@ public class J3001001Page {
     private SelenideElement saveBtn = $(By.xpath("(//input[@value='Зберегти'])[1]"));
     private SelenideElement cancelBtn = $(By.xpath("(//input[@value='Скасувати'])[1]"));
     private SelenideElement sendBtn = $(By.xpath("(//input[@value='Підписати і надіслати'])[1]"));
+    private SelenideElement statusDocument = $(By.id("report_stage"));
 
     /***** Головна форма *****/
     private SelenideElement numberPage = $(By.name("HPAGES"));
@@ -247,5 +248,17 @@ public class J3001001Page {
     public SingAndSendDocumentPage singAndSendDocument() {
         sendBtn.shouldBe(visible).click();
         return new SingAndSendDocumentPage();
+    }
+
+    @Step("Дождаться стутуса документа \"{status}\"")
+    public boolean waitUntilDocumentHaveStatus(String status) {
+        for (int i = 0; i < 30; i++) {
+            if (statusDocument.getText().equalsIgnoreCase(status)) return true;
+            else {
+                sleep(10 * 1000);
+                refresh();
+            }
+        }
+        return false;
     }
 }

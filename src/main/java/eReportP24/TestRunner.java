@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 
 import static eReportP24.utils.Utils.getJ3001001DataItem;
 import static eReportP24.utils.Utils.getNewSettingsDataItem;
+import static org.testng.Assert.assertTrue;
 
 @Log4j
 @Epic("")
@@ -78,8 +79,8 @@ public class TestRunner extends SetUpAndTearDown {
         settingsPage.checkAllSettingsValues(settingsDataItem);
     }
 
-    @Test(description = "Создадим документ")
-    public void createDocument() {
+    @Test(description = "Создадим документ и отправим его")
+    public void createAndSendDocument() {
         j3001001Page = new J3001001Page();
         J3001001DataItem j3001001DataItem = getJ3001001DataItem();
         CreateDocument createDocument = new MainPage().goToCreateDocument();
@@ -90,6 +91,7 @@ public class TestRunner extends SetUpAndTearDown {
                 .checkDocument(j3001001DataItem);
         SingAndSendDocumentPage singAndSendDocumentPage = j3001001Page.singAndSendDocument();
         singAndSendDocumentPage.uploadKeys();
+        assertTrue(j3001001Page.waitUntilDocumentHaveStatus("Надіслано"), "Статус документа не поменялся");
     }
 
 }

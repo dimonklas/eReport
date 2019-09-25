@@ -1,12 +1,18 @@
 package eReportP24.entity.j3001001;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.annotation.Generated;
 
 @Generated("com.robohorse.robopojogenerator")
 @Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class PersonsItem{
 
 	@JsonProperty("startDateWork")

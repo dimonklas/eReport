@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import eReportP24.entity.j3001001.J3001001DataItem;
 import eReportP24.entity.j3001001.PersonsItem;
 import io.qameta.allure.Step;
+import lombok.Getter;
 import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.By;
 
@@ -13,6 +14,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 @Log4j
+@Getter
 public class J3001001Page {
 
     private SelenideElement importBtn = $(By.xpath("(//input[@value='Імпортувати'])[1]"));
@@ -21,6 +23,7 @@ public class J3001001Page {
     private SelenideElement cancelBtn = $(By.xpath("(//input[@value='Скасувати'])[1]"));
     private SelenideElement sendBtn = $(By.xpath("(//input[@value='Підписати і надіслати'])[1]"));
     private SelenideElement statusDocument = $(By.id("report_stage"));
+    private SelenideElement resetDocumentDataBtn = $(By.xpath("//*[text()='Скинути дані']"));
 
     /***** Головна форма *****/
     private SelenideElement numberPage = $(By.name("HPAGES"));
@@ -63,7 +66,7 @@ public class J3001001Page {
         checkType(j3001001DataItem.getType());
         checkAllPersons(j3001001DataItem.getPersons());
         formationDate.shouldHave(exactValue(j3001001DataItem.getFormationDate()));
-        rowsCount.shouldHave(exactValue(String.valueOf(j3001001DataItem.getPersons().size())));
+//        rowsCount.shouldHave(exactValue(String.valueOf(j3001001DataItem.getPersons().size())));
         bossPassport.shouldHave(exactValue(j3001001DataItem.getBossPassport()));
         boss.shouldHave(exactValue(j3001001DataItem.getBoss()));
         accountantPassport.shouldHave(exactValue(j3001001DataItem.getAccountantPassport()));
@@ -260,5 +263,11 @@ public class J3001001Page {
             }
         }
         return false;
+    }
+
+    @Step("Сбросим все данные документа")
+    public J3001001Page resetDocument() {
+        resetDocumentDataBtn.shouldBe(visible).click();
+        return this;
     }
 }

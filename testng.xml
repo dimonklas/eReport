@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Регрессионное тестирование сайта покупки авиабилетов (Внешний сайт + П24)" thread-count="1" verbose="1">
-    <test name="Покупка билетов" >
-        <groups>
-            <run>
-                <include name="Покупка билетов"/>
-            </run>
-        </groups>
+<suite name="Електронна звітність" thread-count="1" verbose="1">
+    <test name="Електронна звітність. Усі тести разом." >
         <classes>
             <class name="eReportP24.TestRunner" />
         </classes>

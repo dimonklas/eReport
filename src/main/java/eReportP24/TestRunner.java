@@ -11,12 +11,13 @@ import lombok.extern.log4j.Log4j;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import static eReportP24.entity.j3001001.J3001001DataItem.getDefaultData;
 import static eReportP24.utils.Utils.getJ3001001DataItem;
 import static eReportP24.utils.Utils.getNewSettingsDataItem;
 import static org.testng.Assert.assertTrue;
 
 @Log4j
-@Epic("")
+@Epic("Електрона звітність")
 @Listeners({AllureOnFailListener.class})
 public class TestRunner extends SetUpAndTearDown {
 
@@ -92,6 +93,22 @@ public class TestRunner extends SetUpAndTearDown {
         SingAndSendDocumentPage singAndSendDocumentPage = j3001001Page.singAndSendDocument();
         singAndSendDocumentPage.uploadKeys();
         assertTrue(j3001001Page.waitUntilDocumentHaveStatus("Надіслано"), "Статус документа не поменялся");
+    }
+
+    @Test(description = "Проверим кнопку \"Скинути дані\" в документе")
+    public void checkResetButtonInDocument() {
+        j3001001Page = new J3001001Page();
+        J3001001DataItem j3001001DataItem = getJ3001001DataItem();
+        J3001001DataItem j3001001DataItemDefault = getDefaultData();
+
+        CreateDocument createDocument = new MainPage().goToCreateDocument();
+        createDocument.searchAndOpenDocumentTemplate(j3001001DataItem.getDeclarationName());
+        j3001001Page
+                .editDocument(j3001001DataItem)
+                .saveDocument()
+                .checkDocument(j3001001DataItem)
+                .resetDocument()
+                .checkDocument(j3001001DataItemDefault);
     }
 
 }

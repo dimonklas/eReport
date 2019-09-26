@@ -22,11 +22,16 @@ public class SettingsData {
     public SettingsData getSettingsDataFromFile() {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            SettingsData settingsData = mapper.readValue(new File("src/main/resources/settingsData.json"), SettingsData.class);
+            SettingsData settingsData = mapper.readValue(new File("src/main/resources/jsonData/settingsData.json"), SettingsData.class);
             return settingsData;
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @JsonIgnore
+    public static SettingsDataItem getNewSettingsDataItem() {
+        return new SettingsData().getSettingsDataFromFile().getSettingsData().get(3);
     }
 }

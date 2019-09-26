@@ -23,11 +23,16 @@ public class J3001001Data{
 	public J3001001Data getJ3001001DataFromFile() {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			J3001001Data j3001001Data = mapper.readValue(new File("src/main/resources/j3001001Data.json"), J3001001Data.class);
+			J3001001Data j3001001Data = mapper.readValue(new File("src/main/resources/jsonData/j3001001Data.json"), J3001001Data.class);
 			return j3001001Data;
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	@JsonIgnore
+	public static J3001001DataItem getJ3001001DataItem() {
+		return new J3001001Data().getJ3001001DataFromFile().getJ3001001Data().get(0);
 	}
 }

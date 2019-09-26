@@ -11,9 +11,9 @@ import lombok.extern.log4j.Log4j;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import static eReportP24.entity.j3001001.J3001001Data.getJ3001001DataItem;
 import static eReportP24.entity.j3001001.J3001001DataItem.getDefaultData;
-import static eReportP24.utils.Utils.getJ3001001DataItem;
-import static eReportP24.utils.Utils.getNewSettingsDataItem;
+import static eReportP24.entity.settingsData.SettingsData.getNewSettingsDataItem;
 import static org.testng.Assert.assertTrue;
 
 @Log4j
@@ -80,8 +80,8 @@ public class TestRunner extends SetUpAndTearDown {
         settingsPage.checkAllSettingsValues(settingsDataItem);
     }
 
-    @Test(description = "Создадим документ и отправим его")
-    public void createAndSendDocument() {
+    @Test(description = "Создадим документ для фискальной службы и отправим его")
+    public void createAndSendFiscalDocument() {
         j3001001Page = new J3001001Page();
         J3001001DataItem j3001001DataItem = getJ3001001DataItem();
         CreateDocument createDocument = new MainPage().goToCreateDocument();
